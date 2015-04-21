@@ -1,13 +1,13 @@
 %bcond_with x
 
 Name: at-spi2-atk
-Version: 2_12_0
+Version: 2.12.0
 Release: 1
 Summary: Assistive Technology Service Provider Interface - GTK+ module
 License: LGPL-2.0+
 Group: System/Libraries
 Url: http://www.gnome.org/
-Source: http://download.gnome.org/sources/at-spi2-atk/2.12/%{name}-2.12.tar.xz
+Source: http://download.gnome.org/sources/at-spi2-atk/2.12/%{name}-%{version}.tar.xz
 Source1001: %{name}.manifest
 Requires: at-spi2-core
 BuildRequires: dbus-devel
