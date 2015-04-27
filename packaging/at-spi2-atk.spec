@@ -1,5 +1,3 @@
-%bcond_with x
-
 Name: at-spi2-atk
 Version: 2.12.0
 Release: 1
@@ -15,9 +13,6 @@ BuildRequires: glib2-devel
 BuildRequires: atk-devel
 BuildRequires: at-spi2-core-devel
 BuildRequires: gettext
-%if ! %{with x}
-ExclusiveArch:
-%endif
 
 %description
 AT-SPI is a general interface for applications to make use of the
