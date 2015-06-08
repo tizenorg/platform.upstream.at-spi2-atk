@@ -272,6 +272,27 @@ impl_GrabHighlight (DBusConnection * bus, DBusMessage * message, void *user_data
   return reply;
 }
 
+static DBusMessage *
+impl_ClearHighlight (DBusConnection * bus, DBusMessage * message, void *user_data)
+{
+  AtkComponent *component = (AtkComponent *) user_data;
+  dbus_bool_t rv;
+  DBusMessage *reply;
+
+  g_return_val_if_fail (ATK_IS_COMPONENT (user_data),
+                        droute_not_yet_handled_error (message));
+
+  rv = atk_component_clear_highlight (component);
+  reply = dbus_message_new_method_return (message);
+  if (reply)
+    {
+      dbus_message_append_args (reply, DBUS_TYPE_BOOLEAN, &rv,
+                                DBUS_TYPE_INVALID);
+    }
+  return reply;
+}
+
+#if 0
 #if 0
 static DBusMessage *
 impl_registerFocusHandler (DBusConnection * bus, DBusMessage * message,
@@ -448,6 +469,7 @@ static DRouteMethod methods[] = {
   {impl_GetMDIZOrder, "GetMDIZOrder"},
   {impl_GrabFocus, "GrabFocus"},
   {impl_GrabHighlight, "GrabHighlight"},
+  {impl_ClearHighlight, "ClearHighlight"},
   //{impl_registerFocusHandler, "registerFocusHandler"},
   //{impl_deregisterFocusHandler, "deregisterFocusHandler"},
   {impl_GetAlpha, "GetAlpha"},
