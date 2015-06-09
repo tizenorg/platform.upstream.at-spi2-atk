@@ -293,7 +293,6 @@ impl_ClearHighlight (DBusConnection * bus, DBusMessage * message, void *user_dat
 }
 
 #if 0
-#if 0
 static DBusMessage *
 impl_registerFocusHandler (DBusConnection * bus, DBusMessage * message,
                            void *user_data)
