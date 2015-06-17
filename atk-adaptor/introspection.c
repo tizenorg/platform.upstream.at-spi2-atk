@@ -190,6 +190,8 @@ const char *spi_org_a11y_atspi_Collection =
 const char *spi_org_a11y_atspi_Component = 
 "<interface name=\"org.a11y.atspi.Component\" version=\"0.1.7\">"
 ""
+"  <property access=\"read\" name=\"HighlightIndex\" type=\"i\" />"
+""
 "  <method name=\"Contains\">"
 "    <arg direction=\"in\" name=\"x\" type=\"i\" />"
 "    <arg direction=\"in\" name=\"y\" type=\"i\" />"

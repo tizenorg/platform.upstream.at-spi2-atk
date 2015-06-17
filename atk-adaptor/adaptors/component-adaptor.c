@@ -428,6 +428,14 @@ impl_get_ScreenExtents (DBusMessageIter * iter, void *user_data)
   return TRUE;
 }
 
+static dbus_bool_t
+impl_get_HighlightIndex (DBusMessageIter * iter, void *user_data)
+{
+  AtkComponent *component = (AtkComponent *) user_data;
+  g_return_val_if_fail (ATK_IS_COMPONENT (user_data), -1);
+  return droute_return_v_int32 (iter, atk_component_get_highlight_index (component));
+}
+
 static DBusMessage *
 impl_SetSize (DBusConnection * bus, DBusMessage * message, void *user_data)
 {
@@ -480,6 +488,7 @@ static DRouteMethod methods[] = {
 
 static DRouteProperty properties[] = {
   {impl_get_ScreenExtents, NULL, "ScreenExtents"},
+  {impl_get_HighlightIndex, NULL, "HighlightIndex"},
   {NULL, NULL, NULL}
 };
 void
