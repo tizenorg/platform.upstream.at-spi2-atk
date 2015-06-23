@@ -1182,6 +1182,8 @@ types_match (DBusMessageIter *iter, char c)
     return TRUE;
   else if (t != c)
     return FALSE;
+
+  return FALSE;
 }
 
 static void

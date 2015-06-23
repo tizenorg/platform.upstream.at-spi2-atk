@@ -200,7 +200,11 @@ add_property_to_event (event_data *evdata, const char *property)
   }
 
   prop->name = g_strdup (property);
-  evdata->properties = g_slist_append (evdata->properties, prop);
+
+  if (evdata)
+  {
+    evdata->properties = g_slist_append (evdata->properties, prop);
+  }
 }
 
 static void
