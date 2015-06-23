@@ -943,7 +943,7 @@ text_insert_event_listener (GSignalInvocationHint * signal_hint,
   guint text_changed_signal_id;
   GSignalQuery signal_query;
   const gchar *name;
-  const gchar *minor_raw, *text;
+  const gchar *minor_raw, *text = NULL;
   gchar *minor;
   gint detail1 = 0, detail2 = 0;
 
@@ -972,8 +972,9 @@ text_insert_event_listener (GSignalInvocationHint * signal_hint,
   if (G_VALUE_TYPE (&param_values[3]) == G_TYPE_STRING)
     text = g_value_get_string (&param_values[3]);
 
-  emit_event (accessible, ITF_EVENT_OBJECT, name, minor, detail1, detail2,
-              DBUS_TYPE_STRING_AS_STRING, text, append_basic);
+  if (text != NULL)
+    emit_event (accessible, ITF_EVENT_OBJECT, name, minor, detail1, detail2,
+                DBUS_TYPE_STRING_AS_STRING, text, append_basic);
   g_free (minor);
   return TRUE;
 }
@@ -992,7 +993,7 @@ text_remove_event_listener (GSignalInvocationHint * signal_hint,
   guint text_changed_signal_id;
   GSignalQuery signal_query;
   const gchar *name;
-  const gchar *minor_raw, *text;
+  const gchar *minor_raw, *text = NULL;
   gchar *minor;
   gint detail1 = 0, detail2 = 0;
 
@@ -1021,8 +1022,9 @@ text_remove_event_listener (GSignalInvocationHint * signal_hint,
   if (G_VALUE_TYPE (&param_values[3]) == G_TYPE_STRING)
     text = g_value_get_string (&param_values[3]);
 
-  emit_event (accessible, ITF_EVENT_OBJECT, name, minor, detail1, detail2,
-              DBUS_TYPE_STRING_AS_STRING, text, append_basic);
+  if (text != NULL)
+    emit_event (accessible, ITF_EVENT_OBJECT, name, minor, detail1, detail2,
+                DBUS_TYPE_STRING_AS_STRING, text, append_basic);
   g_free (minor);
   return TRUE;
 }
