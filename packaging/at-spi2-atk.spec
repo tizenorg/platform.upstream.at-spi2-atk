@@ -42,7 +42,7 @@ accessibility toolkit. This version is based on dbus.
 cp %{SOURCE1001} .
 
 %build
-%autogen
+%autogen --enable-p2p=no
 %__make %{?_smp_flags}
 
 %install
